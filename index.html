@@ -45,41 +45,31 @@
 </head>
 <body>
     <div class="image-container">
-        <img src="https://l.top4top.io/p_32131zd9t1.png" alt="Discord Image">
+        <img src="https://t3.ftcdn.net/jpg/05/84/98/62/360_F_584986235_Uuk8vamiJeZGO2wJH2XBRxbmcZymzKx1.jpg">
     </div>
-
     <audio autoplay loop>
-        <source src="حط الاغنيه الي تبيها.mp3" type="audio/mpeg">
-        متصفحك لا يدعم تشغيل الصوت.
+        <source src="https://www.youtube.com/watch?v=2RjCr6yBl0c&list=RD2RjCr6yBl0c&start_radio=1&pp=ygUxINix2YrZhdmK2YPYsyDYp9mE2YPYqNmK2LEg2YjYtdmEINmK2Kcg2LHYrNin2YTZh6AHAQ%3D%3D" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
-
-    <div class="info">
-        <strong>IP:</strong> <span id="ip"></span><br>
-        <strong>City:</strong> <span id="city"></span><br>
-        <strong>Region:</strong> <span id="region"></span><br>
-        <strong>Country:</strong> <span id="country"></span><br>
-        <strong>Location:</strong> <span id="loc"></span><br>
-        <strong>Organization:</strong> <span id="org"></span><br>
-        <strong>Timezone:</strong> <span id="timezone"></span>
+    <div class="info" id="ip-info">
+        <strong>IP: <span id="ip"></span></strong><br>
+        <span><strong>City:</strong> <span id="city"></span></span><br>
+        <span><strong>Region:</strong> <span id="region"></span></span><br>
+        <span><strong>Country:</strong> <span id="country"></span></span><br>
+        <span><strong>Location:</strong> <span id="loc"></span></span><br>
+        <span><strong>Organization:</strong> <span id="org"></span></span><br>
+        <span><strong>Timezone:</strong> <span id="timezone"></span></span>
     </div>
-
-    <div class="text">discord.gg/uaee</div>
+    <div class="text">كس اخت الشغله يزلمه</div>
 
     <script>
-        fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('ip').textContent = data.ip;
-                document.getElementById('city').textContent = data.city;
-                document.getElementById('region').textContent = data.region;
-                document.getElementById('country').textContent = data.country;
-                document.getElementById('loc').textContent = data.loc;
-                document.getElementById('org').textContent = data.org;
-                document.getElementById('timezone').textContent = data.timezone;
-            })
-            .catch(error => {
-                console.error('Error fetching IP info:', error);
-            });
+         fetch('https://ipinfo.io/json')
+        .then(response => response.json())
+        .then(data => {
+            delete data.readme;
+            const infoDiv = document.getElementById('ip-info');
+            infoDiv.textContent = JSON.stringify(data, null, 2);
+        });
     </script>
 </body>
 </html>
